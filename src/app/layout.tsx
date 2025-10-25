@@ -1,4 +1,11 @@
-import Nav from "./_components/Nav";
+import "./globals.css";
+export const metadata = {
+  title: "F8 - hoc lap trinh",
+  description: "hoc lap trinh de di lam",
+  openGraph: {
+    images: ["https://fullstack.edu.vn/image/01.jpg"],
+  },
+};
 
 export default function RootLayout({
   children,
@@ -7,12 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <header className="py-3 border-b">
-          <Nav />
-        </header>
-        <main className="max-w-[1200px] mx-auto">{children}</main>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

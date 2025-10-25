@@ -1,7 +1,13 @@
 import Button from "./Button";
+import Form from "./Form";
 
 const getTodoList = async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER}/todos`, {
+    cache: "force-cache",
+    next: {
+      tags: ["todo-list"],
+    },
+  });
   const todoList = await response.json();
   return todoList;
 };
@@ -21,6 +27,7 @@ const TodoList = async () => {
           <Button id={todo.id}></Button>
         </div>
       ))}
+      <Form />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Title() {
   const [title, setTitle] = useState<string>("hf");
@@ -15,6 +15,22 @@ export default function Title() {
   const handleRedirect = () => {
     router.push("/products");
   };
+
+  useEffect(() => {
+    const setCookie = async () => {
+      const response = await fetch(`api/cookies`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          key: "dung",
+          value: "123",
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+    };
+    setCookie();
+  }, []);
   return (
     <div>
       <h2>
